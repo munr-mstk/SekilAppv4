@@ -23,10 +23,10 @@ public class Dikdortgen implements Sekil{
         this.sembol = sembol == 0 ? DEFAULT_SYMBOL : sembol;
     }
 
-    @Override
-    public String toString(){
 
-        return "Dikdortgen :genislik : " + genislik + ", Yukseklik : " + yukseklik + " Symbol " + sembol;
+    @Override
+    public String toString() {
+        return "Dikdörtgen, Genişlik: " + genislik + ", Yükseklik: " + yukseklik + ", Sembol: " + sembol;
     }
 
     /**

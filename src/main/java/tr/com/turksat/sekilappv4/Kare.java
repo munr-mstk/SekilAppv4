@@ -23,9 +23,8 @@ public class Kare implements Sekil{
     }
     @Override
     public String toString() {
-        return "Kare, Boyut: "+boyut+", Symbol: "+sembol;
+        return "Kare, Boyut: " + boyut + ", Sembol: " + sembol;
     }
-
     /**
      * Karenin çizim metodudur. Karenin boyutunu kullanarak
      * iki boyutlu bir alan üzerinde semboller ile çizer.

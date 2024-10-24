@@ -21,8 +21,8 @@ public class Ucgen  implements Sekil {
         this.sembol = sembol == 0 ? DEFAULT_SYMBOL : sembol; // Sembolü ayarla, eğer sıfır ise varsayılan sembolü kullan
     }
     @Override
-    public String toString(){
-        return "Ucgen, Yukseklik :"+yukseklik+", Sembol"+sembol;
+    public String toString() {
+        return "Üçgen, Yükseklik: " + yukseklik + ", Sembol: " + sembol;
     }
 
     /**

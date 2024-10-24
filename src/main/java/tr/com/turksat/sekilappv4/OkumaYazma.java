@@ -19,10 +19,14 @@ public class OkumaYazma {
             String satir;
             while ((satir = br.readLine()) != null) {
                 Sekil yeniSekil = Sekil.fromString(satir);
-                sekilListesi.add(yeniSekil);
-                // Toplam alan ve çevre hesaplamaları
-                toplamAlan += yeniSekil.alanHesapla(); // Alan hesaplama metodunu çağır
-                toplamCevre += yeniSekil.cevreHesapla(); // Çevre hesaplama metodunu çağır
+                if (yeniSekil != null) {
+                    sekilListesi.add(yeniSekil);
+
+                    toplamAlan += yeniSekil.alanHesapla();
+                    toplamCevre += yeniSekil.cevreHesapla();
+                } else {
+                    LogUtil.log( satir);
+                }
             }
             LogUtil.log("Şekiller başarıyla dosyadan okundu ve listeye eklendi.");
         } catch (IOException e) {
@@ -46,7 +50,6 @@ public class OkumaYazma {
             }
             LogUtil.log("Şekil listesi başarıyla dosyaya kaydedildi.");
         } catch (IOException e) {
-            // Dosya yazma sırasında hata oluşursa buradan yakalanıyor.
             LogUtil.log("Dosya yazılırken hata oluştu: " + e.getMessage());
         }
     }

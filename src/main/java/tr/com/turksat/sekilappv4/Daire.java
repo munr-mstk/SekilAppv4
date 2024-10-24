@@ -16,8 +16,7 @@ public class Daire implements Sekil{
     }
     @Override
     public String toString() {
-
-        return "Daire, cap : " + cap + ", Sembol : " + sembol;
+        return "Daire, Çap: " + cap + ", Sembol: " + sembol;
     }
 
     /**
