@@ -1,6 +1,5 @@
 package tr.com.turksat.sekilappv4;
 
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -10,18 +9,16 @@ public class Main {
     private static List<Sekil> sekilListesi = new ArrayList<>();
 
     public static void main(String[] args) {
-
         Scanner scanner = new Scanner(System.in);
         Sekil seciliSekil = null;
         char sembol = '*';
-        ToplamAlanCevre toplamAlanCevre = new ToplamAlanCevre();
 
         while (true) {
             LogUtil.log("");
             LogUtil.log("Seçenekler:");
             LogUtil.log("1: Küçük Kare çiz");
             LogUtil.log("2: İstediğin boyutta kare çiz");
-            LogUtil.log("3: Dikdörtgen çiz");
+            LogUtil.log("3: Dikdörtken çiz");
             LogUtil.log("4: Üçgen çiz");
             LogUtil.log("5: Daire çiz");
             LogUtil.log("6: Toplam alan ve çevre bilgilerini göster");
@@ -41,8 +38,6 @@ public class Main {
                     seciliSekil = new Kare(3, sembol);
                     sekilListesi.add(seciliSekil);
                     seciliSekil.ciz();
-                    toplamAlanCevre.alanEkle(seciliSekil.alanHesapla());
-                    toplamAlanCevre.cevreEkle(seciliSekil.cevreHesapla());
                     break;
                 case 2:
                     LogUtil.log("Kare boyutunu girin: ");
@@ -50,8 +45,6 @@ public class Main {
                     seciliSekil = new Kare(kareBoyut, sembol);
                     sekilListesi.add(seciliSekil);
                     seciliSekil.ciz();
-                    toplamAlanCevre.alanEkle(seciliSekil.alanHesapla());
-                    toplamAlanCevre.cevreEkle(seciliSekil.cevreHesapla());
                     break;
                 case 3:
                     LogUtil.log("Dikdörtgen genişliğini girin: ");
@@ -61,8 +54,6 @@ public class Main {
                     seciliSekil = new Dikdortgen(genislik, yukseklik, sembol);
                     sekilListesi.add(seciliSekil);
                     seciliSekil.ciz();
-                    toplamAlanCevre.alanEkle(seciliSekil.alanHesapla());
-                    toplamAlanCevre.cevreEkle(seciliSekil.cevreHesapla());
                     break;
                 case 4:
                     LogUtil.log("Üçgenin yüksekliğini girin:");
@@ -70,8 +61,6 @@ public class Main {
                     seciliSekil = new Ucgen(yukselik, sembol);
                     sekilListesi.add(seciliSekil);
                     seciliSekil.ciz();
-                    toplamAlanCevre.alanEkle(seciliSekil.alanHesapla());
-                    toplamAlanCevre.cevreEkle(seciliSekil.cevreHesapla());
                     break;
                 case 5:
                     LogUtil.log("Dairenin çapını girin: ");
@@ -79,15 +68,13 @@ public class Main {
                     seciliSekil = new Daire(cap, sembol);
                     sekilListesi.add(seciliSekil);
                     seciliSekil.ciz();
-                    toplamAlanCevre.alanEkle(seciliSekil.alanHesapla());
-                    toplamAlanCevre.cevreEkle(seciliSekil.cevreHesapla());
                     break;
                 case 6:
-                    toplamAlanCevre.toplamBilgisi();
+                    hesaplaToplamAlanVeCevre();
                     break;
                 case 7:
-                    toplamAlanCevre.reset();
-                    LogUtil.log("Alan ve çevre sıfırlandı.");
+                    sekilListesi.clear();
+                    LogUtil.log("Şekil listesi sıfırlandı.");
                     break;
                 case 8:
                     System.out.print("Yeni sembolü girin: ");
@@ -104,15 +91,29 @@ public class Main {
                     OkumaYazma.listeyiDosyayaYaz(java_calismalarim, sekilListesi);
                     break;
                 case 11:
-                    OkumaYazma.listeyiSifirla(sekilListesi);
+                    sekilListesi.clear();
+                    LogUtil.log("Şekil listesi sıfırlandı.");
                     break;
                 case 12:
                     LogUtil.log("Programdan çıkılıyor...");
-                    System.exit(0);
+
                     break;
                 default:
                     LogUtil.log("Geçersiz seçenek. Tekrar deneyin.");
             }
         }
+    }
+
+    private static void hesaplaToplamAlanVeCevre() {
+        double toplamAlan = 0;
+        double toplamCevre = 0;
+
+        for (Sekil sekil : sekilListesi) {
+            toplamAlan += sekil.alanHesapla();
+            toplamCevre += sekil.cevreHesapla();
+        }
+
+        LogUtil.log("Toplam alan: " + toplamAlan);
+        LogUtil.log("Toplam çevre: " + toplamCevre);
     }
 }

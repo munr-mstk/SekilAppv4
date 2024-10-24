@@ -1,1 +1,2 @@
-Dikdortgen :genislik : 13, Yukseklik : 6 Symbol *
+Kare, Boyut: 3, Symbol: *
+Dikdortgen :genislik : 4, Yukseklik : 4 Symbol *

@@ -5,7 +5,11 @@ import java.util.List;
 
 public class OkumaYazma {
 
+    private static double toplamAlan = 0; // Toplam alan
+    private static double toplamCevre = 0; // Toplam çevre
+
     /**
+     * Dosyadan şekilleri oku ve verilen listeye ekle.
      *
      * @param dosyaAdi     Okunacak dosyanın adı.
      * @param sekilListesi Şekillerin ekleneceği liste.
@@ -16,10 +20,12 @@ public class OkumaYazma {
             while ((satir = br.readLine()) != null) {
                 Sekil yeniSekil = Sekil.fromString(satir);
                 sekilListesi.add(yeniSekil);
+                // Toplam alan ve çevre hesaplamaları
+                toplamAlan += yeniSekil.alanHesapla(); // Alan hesaplama metodunu çağır
+                toplamCevre += yeniSekil.cevreHesapla(); // Çevre hesaplama metodunu çağır
             }
-            LogUtil.log("Şekiller başarıyla dosyadan okundı ve listeye eklendi.");
+            LogUtil.log("Şekiller başarıyla dosyadan okundu ve listeye eklendi.");
         } catch (IOException e) {
-
             LogUtil.log("Dosya okunurken hata oluştu: " + e.getMessage());
         }
     }
@@ -32,7 +38,6 @@ public class OkumaYazma {
      */
     public static void listeyiDosyayaYaz(String dosyaAdi, List<Sekil> sekilListesi) {
         try (BufferedWriter bw = new BufferedWriter(new FileWriter(dosyaAdi))) {
-            // Liste üzerindeki her şekil için yazma işlemo yapılıyor
             for (Sekil sekil : sekilListesi) {
                 if (sekil != null) {
                     bw.write(sekil.toString());
@@ -41,20 +46,38 @@ public class OkumaYazma {
             }
             LogUtil.log("Şekil listesi başarıyla dosyaya kaydedildi.");
         } catch (IOException e) {
-            // Dosya yazma sırasında hata oluşursa buradan yakelaniyor.
+            // Dosya yazma sırasında hata oluşursa buradan yakalanıyor.
             LogUtil.log("Dosya yazılırken hata oluştu: " + e.getMessage());
         }
     }
 
     /**
-     * Verilen şekil listesini sıfırlar.
+     * Verilen şekil listesini sıfırlayın ve toplam alan/çevre değerlerini sıfırlayın.
      *
      * @param sekilListesi Sıfırlanacak şekil listesi.
      */
     public static void listeyiSifirla(List<Sekil> sekilListesi) {
         sekilListesi.clear();
-        System.out.println("Liste başarıyla sıfırlandı.");
+        toplamAlan = 0;
+        toplamCevre = 0;
+        LogUtil.log("Liste ve toplam alan/çevre başarıyla sıfırlandı.");
     }
 
+    /**
+     * Toplam alanı döndürür.
+     *
+     * @return Toplam alan değeri.
+     */
+    public static double getToplamAlan() {
+        return toplamAlan;
+    }
 
+    /**
+     * Toplam çevreyi döndürür.
+     *
+     * @return Toplam çevre değeri.
+     */
+    public static double getToplamCevre() {
+        return toplamCevre;
+    }
 }
