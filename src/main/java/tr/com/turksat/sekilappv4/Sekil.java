@@ -37,27 +37,33 @@ public interface Sekil {
      */
     static Sekil fromString(String sekilStr) {
         try {
-            if (sekilStr.startsWith("Kare:")) {
-                int boyut = Integer.parseInt(sekilStr.split(":")[1].trim());
-                return new Kare(boyut, '*');
-            } else if (sekilStr.startsWith("Dikdortgen:")) {
-                String[] parts = sekilStr.split(":")[1].trim().split(",");
-                int genislik = Integer.parseInt(parts[0].trim());
-                int yukseklik = Integer.parseInt(parts[1].trim());
-                return new Dikdortgen(genislik, yukseklik, '*');
-            } else if (sekilStr.startsWith("Daire:")) {
-                double cap = Double.parseDouble(sekilStr.split(":")[1].trim());
-                return new Daire((int) cap, '*');
-            } else if (sekilStr.startsWith("Üçgen:")) {
-                double yukseklik = Double.parseDouble(sekilStr.split(":")[1].trim());
-                return new Ucgen((int) yukseklik, '*');
-            }
+            String[] parts = sekilStr.split(", ");
+            String type = parts[0].trim();
+            String values = parts[1].trim();
 
-            LogUtil.log("Geçersiz şekil satırı: " + sekilStr);
+            switch (type) {
+                case "Kare":
+                    int boyut = Integer.parseInt(values.split(":")[1].trim());
+                    return new Kare(boyut, '*');
+                case "Dikdortgen":
+                    String[] dimensions = values.split(":")[1].trim().split(",");
+                    int genislik = Integer.parseInt(dimensions[0].trim());
+                    int yukseklik = Integer.parseInt(dimensions[1].trim());
+                    return new Dikdortgen(genislik, yukseklik, '*');
+                case "Daire":
+                    int cap = Integer.parseInt(values.split(":")[1].trim());
+                    return new Daire(cap, '*');
+                case "Üçgen":
+                    int yukseklikUcgen = Integer.parseInt(values.split(":")[1].trim());
+                    return new Ucgen(yukseklikUcgen, '*');
+                default:
+                    LogUtil.log("Geçersiz şekil tipi: " + type);
+            }
         } catch (Exception e) {
             LogUtil.log("Hata oluştu: " + e.getMessage() + " için satır: " + sekilStr);
         }
 
-        return null; // Geçersizse null döndür
+        return null;
     }
+
 }

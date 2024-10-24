@@ -1,9 +1,10 @@
 package tr.com.turksat.sekilappv4;
 
-public class Daire implements Sekil{
+public class Daire implements Sekil {
     private int cap;
     private char sembol;
     private final char DEFAULT_SYMBOL = '*';
+
 
     /**
      * Daire sınıfının yapıcı metodu.
@@ -14,13 +15,14 @@ public class Daire implements Sekil{
         this.cap = cap;
         this.sembol = sembol == 0 ? DEFAULT_SYMBOL : sembol;
     }
+
     @Override
     public String toString() {
         return "Daire, Çap: " + cap + ", Sembol: " + sembol;
     }
 
     /**
-     * Dairenin çizim metodudur. Dairenin çarpını kullanarak
+     * Dairenin çizim metodudur. Dairenin çapını kullanarak
      * iki boyutlu bir alan üzerinde semboller ile çizer.
      */
     @Override
@@ -70,7 +72,3 @@ public class Daire implements Sekil{
         return Math.PI * cap;
     }
 }
-
-
-
-

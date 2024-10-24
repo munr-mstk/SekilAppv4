@@ -1,10 +1,10 @@
 package tr.com.turksat.sekilappv4;
+
 /**
- * Dikdortgen sınıfı, dikdörtgen nesnelerini temsil eder ve
+ * Dikdörtgen sınıfı, dikdörtgen nesnelerini temsil eder ve
  * dikdörtgenin çizimini, alanını ve çevresini hesaplar.
  */
-
-public class Dikdortgen implements Sekil{
+public class Dikdortgen implements Sekil {
 
     private int genislik;
     private int yukseklik;
@@ -23,7 +23,6 @@ public class Dikdortgen implements Sekil{
         this.sembol = sembol == 0 ? DEFAULT_SYMBOL : sembol;
     }
 
-
     @Override
     public String toString() {
         return "Dikdörtgen, Genişlik: " + genislik + ", Yükseklik: " + yukseklik + ", Sembol: " + sembol;
@@ -36,7 +35,6 @@ public class Dikdortgen implements Sekil{
      */
     @Override
     public void ciz() {
-
         for (int i = 0; i < yukseklik; i++) {
             for (int j = 0; j < genislik; j++) {
                 System.out.print(sembol + " ");
@@ -74,9 +72,5 @@ public class Dikdortgen implements Sekil{
     public double cevreHesapla() {
         return 2 * (genislik + yukseklik);
     }
+
 }
-
-
-
-
-

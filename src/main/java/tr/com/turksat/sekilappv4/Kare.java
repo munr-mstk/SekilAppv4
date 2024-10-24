@@ -4,9 +4,7 @@ package tr.com.turksat.sekilappv4;
  * Kare sınıfı, kare nesnelerini temsil eder ve
  * karenin çizimini, alanını ve çevresini hesaplar.
  */
-
-
-public class Kare implements Sekil{
+public class Kare implements Sekil {
 
     private int boyut;
     private char sembol;
@@ -21,17 +19,18 @@ public class Kare implements Sekil{
         this.boyut = boyut; // Boyut ayarlanıyor
         this.sembol = sembol == 0 ? DEFAULT_SYMBOL : sembol;
     }
+
     @Override
     public String toString() {
         return "Kare, Boyut: " + boyut + ", Sembol: " + sembol;
     }
+
     /**
      * Karenin çizim metodudur. Karenin boyutunu kullanarak
      * iki boyutlu bir alan üzerinde semboller ile çizer.
      */
     @Override
     public void ciz() {
-
         for (int i = 0; i < boyut; i++) {
             for (int j = 0; j < boyut; j++) {
                 System.out.print(sembol + " ");
@@ -69,5 +68,3 @@ public class Kare implements Sekil{
         return 4 * boyut;
     }
 }
-
-

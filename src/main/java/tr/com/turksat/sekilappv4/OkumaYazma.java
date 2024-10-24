@@ -18,14 +18,16 @@ public class OkumaYazma {
         try (BufferedReader br = new BufferedReader(new FileReader(dosyaAdi))) {
             String satir;
             while ((satir = br.readLine()) != null) {
+                // Her satırdaki şekli uygun türde bir şekil nesnesine dönüştür.
                 Sekil yeniSekil = Sekil.fromString(satir);
                 if (yeniSekil != null) {
+                    // Şekil listeye eklenir ve alan/çevre hesaplanır.
                     sekilListesi.add(yeniSekil);
-
                     toplamAlan += yeniSekil.alanHesapla();
                     toplamCevre += yeniSekil.cevreHesapla();
                 } else {
-                    LogUtil.log( satir);
+                    // Geçersiz şekil satırlarını logla.
+                    LogUtil.log("Geçersiz şekil: " + satir);
                 }
             }
             LogUtil.log("Şekiller başarıyla dosyadan okundu ve listeye eklendi.");

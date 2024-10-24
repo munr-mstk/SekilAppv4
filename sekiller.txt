@@ -1,2 +1,2 @@
-Kare, Boyut: 3, Sembol: *
-Dikdörtgen, Genişlik: 6, Yükseklik: 8, Sembol: *
+Üçgen, Yükseklik: 7, Sembol: *
+Daire, Çap: 5, Sembol: *

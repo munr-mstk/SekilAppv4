@@ -4,8 +4,7 @@ package tr.com.turksat.sekilappv4;
  * Ucgen sınıfı, üçgen geometrik şeklinin özelliklerini tanımlar ve
  * çizim, alan ve çevre hesaplamaları yapar.
  */
-public class Ucgen  implements Sekil {
-
+public class Ucgen implements Sekil {
 
     private int yukseklik; // Üçgenin yüksekliği
     private char sembol; // Üçgeni temsil eden sembol
@@ -20,6 +19,7 @@ public class Ucgen  implements Sekil {
         this.yukseklik = yukseklik; // Yüksekliği ayarla
         this.sembol = sembol == 0 ? DEFAULT_SYMBOL : sembol; // Sembolü ayarla, eğer sıfır ise varsayılan sembolü kullan
     }
+
     @Override
     public String toString() {
         return "Üçgen, Yükseklik: " + yukseklik + ", Sembol: " + sembol;
@@ -78,5 +78,4 @@ public class Ucgen  implements Sekil {
         // Çevre = taban + 2 * (kenar uzunluğu) formülü ile hesaplanır
         return taban + 2 * Math.sqrt(Math.pow(taban / 2.0, 2) + Math.pow(yukseklik, 2));
     }
-
 }
